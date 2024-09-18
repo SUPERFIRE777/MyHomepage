@@ -13,6 +13,10 @@ const videoNames = ["足を拝借.mp4"];
 window.onload = function() {
     document.getElementById('nav-container').innerHTML = navHTML;
     for(let i=0; i<videoNames.length; i++){
+        var element = document.getElementById(`video${i}`);
+        if(element == null){
+            continue;
+        }
         document.getElementById(`video${i}`).innerHTML += `
         <video width="640" height="360" controls>
             <source src="${videoNames[i]}" type="video/mp4">
