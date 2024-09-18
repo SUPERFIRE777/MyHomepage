@@ -17,7 +17,7 @@ window.onload = function() {
         if(element == null){
             continue;
         }
-        document.getElementById(`video${i}`).innerHTML += `
+        element.innerHTML += `
         <video width="640" height="360" controls>
             <source src="${videoNames[i]}" type="video/mp4">
         </video>
