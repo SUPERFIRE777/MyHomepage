@@ -80,11 +80,13 @@ window.onload = function() {
         if(element != null){
             element.innerText = new Date().toLocaleString({"hour12": false});
         }
+    }, 0);
 
-        element = document.getElementById('factor');
+    setInterval(function(){
+        var element = document.getElementById('factor');
         if(element != null){
             element.innerText = todays_factor();
         }
-    }, 1000);
+    }, 2000);
 };
 
