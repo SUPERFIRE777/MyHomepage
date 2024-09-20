@@ -85,6 +85,6 @@ window.onload = function() {
         if(element != null){
             element.innerText = todays_factor();
         }
-    }, 0);
+    }, 1000);
 };
 
