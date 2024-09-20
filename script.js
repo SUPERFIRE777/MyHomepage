@@ -51,7 +51,13 @@ function getYYYYMMDD() {
 }
 
 function todays_factor(){
-    return prime_factorize(parseInt(getYYYYMMDD()));
+    yyyymmdd = getYYYYMMDD();
+    prime_factor = prime_factorize(parseInt(yyyymmdd));
+    if(yyyymmdd == prime_factor){
+        return `${yyyymmdd}は素数です！`;
+    }else{
+        return `${yyyymmdd} = ${prime_factor}`;
+    }
 }
 
 window.onload = function() {
@@ -77,7 +83,7 @@ window.onload = function() {
 
         element = document.getElementById('factor');
         if(element != null){
-            element.innerText = getYYYYMMDD() + " = " + todays_factor();
+            element.innerText = todays_factor();
         }
     }, 0);
 };
