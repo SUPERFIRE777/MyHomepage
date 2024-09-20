@@ -23,7 +23,6 @@ function prime_factorize(num) {
         if(divisor * divisor > num) break;
     }
     if(num > 1) factor[num] = (factor[num] || 0) + 1;
-    console.log(factor);
     texts = [];
     upper = "⁰¹²³⁴⁵⁶⁷⁸⁹";
     for (const [prime, power] of Object.entries(factor)) {
