@@ -56,7 +56,7 @@ function todays_factor(){
 
 window.onload = function() {
     document.getElementById('nav-container').innerHTML = navHTML;
-    
+
     for(let i=0; i<videoNames.length; i++){
         var element = document.getElementById(`video${i}`);
         if(element == null){
@@ -69,15 +69,15 @@ window.onload = function() {
         `;
     }
 
-    element = document.getElementById('factor');
-    if(element != null){
-        element.innerText = getYYYYMMDD() + " = " + todays_factor();
-    }
-
     setInterval(function(){
         var element = document.getElementById('time');
         if(element != null){
             element.innerText = new Date().toLocaleString({"hour12": false});
+        }
+
+        element = document.getElementById('factor');
+        if(element != null){
+            element.innerText = getYYYYMMDD() + " = " + todays_factor();
         }
     }, 0);
 };
