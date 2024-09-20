@@ -69,7 +69,7 @@ window.onload = function() {
     }
     element = document.getElementById('factor');
     if(element != null){
-        element.innerText = getYYYYMMDD() + "=" + todays_factor();
+        element.innerText = getYYYYMMDD() + " = " + todays_factor();
     }
 
     setInterval(function(){
