@@ -78,12 +78,18 @@ function prime_factor_display_text(string){
     }
 }
 
-function prime_factor_display(){
+function prime_factor_display(time = false){
     const element = document.getElementById('input_number');
     const prime_factor_element = document.getElementById('output_prime_factor');
 
+    const start = Date.now();
     const prime_factor = prime_factor_display_text(element.value);
-    prime_factor_element.innerText = prime_factor;
+    const end = Date.now();
+    if(time){
+        prime_factor_element.innerText = prime_factor + ` (${end - start}ms)`;
+    }else{
+        prime_factor_element.innerText = prime_factor;
+    }
 }
 
 function copy_text_by_id(id){
