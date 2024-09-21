@@ -4,6 +4,7 @@ const navHTML = `
         <li><a href="index.html">ホーム</a></li>
         <li><a href="introduction.html">自己紹介</a></li>
         <li><a href="works.html">作品</a></li>
+        <li><a href="tools.html">ツール</a></li>
     </ul>
 </nav>
 `;
@@ -60,14 +61,40 @@ function todays_factor(){
     }
 }
 
-function copy_todays_factor(){
+function prime_factor_display_text(string){
+    var int = parseInt(string);
+    console.log()
+    if (string == ""){
+        return `値を入力してください`;
+    }
+    if (isNaN(int) || int < 2 || int > Number.MAX_SAFE_INTEGER){
+        return `対応外の値です`;
+    }
+    var prime_factor = prime_factorize(int);
+    if(int == prime_factor){
+        return `${int}は素数です！`;
+    }else{
+        return `${int} = ${prime_factor}`;
+    }
+}
+
+function prime_factor_display(){
+    const element = document.getElementById('input_number');
+    const prime_factor_element = document.getElementById('output_prime_factor');
+
+    const prime_factor = prime_factor_display_text(element.value);
+    prime_factor_element.innerText = prime_factor;
+}
+
+function copy_text_by_id(id){
     const message_element = document.getElementById('copy_message');
     if(!navigator.clipboard){
         message_element.innerText = "Copy unavailable";
         return;
     }
 
-    navigator.clipboard.writeText(todays_factor()).then(function(){
+    const element = document.getElementById(id);
+    navigator.clipboard.writeText(element.innerText).then(function(){
         message_element.innerText = "Copied!";
     }, function(){
         message_element.innerText = "Copy failed";
