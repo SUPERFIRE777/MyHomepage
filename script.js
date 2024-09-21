@@ -102,5 +102,12 @@ window.onload = function() {
             element.innerText = todays_factor();
         }
     }, 0);
+
+    const h1Element = document.querySelector('h1');
+    h1Element.style.backgroundImage = "url('background.jpeg')";
+    h1Element.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+    h1Element.style.backgroundBlendMode = "lighten";
+    h1Element.style.backgroundSize = "cover";
+    h1Element.style.backgroundPosition = "center";
 };
 
