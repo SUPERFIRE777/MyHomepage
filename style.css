@@ -3,6 +3,10 @@ html {
 }
 h1 {
     padding: 10px;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 #nav-container {
     width: 100%;
