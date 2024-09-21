@@ -4,6 +4,7 @@ html {
 h1 {
     padding: 10px;
     min-height: 100px;
+    max-width: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
