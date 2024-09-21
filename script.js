@@ -51,13 +51,27 @@ function getYYYYMMDD() {
 }
 
 function todays_factor(){
-    yyyymmdd = getYYYYMMDD();
-    prime_factor = prime_factorize(parseInt(yyyymmdd));
+    var yyyymmdd = getYYYYMMDD();
+    var prime_factor = prime_factorize(parseInt(yyyymmdd));
     if(yyyymmdd == prime_factor){
         return `${yyyymmdd}は素数です！`;
     }else{
         return `${yyyymmdd} = ${prime_factor}`;
     }
+}
+
+function copy_todays_factor(){
+    const message_element = document.getElementById('copy_message');
+    if(!navigator.clipboard){
+        message_element.innerText = "Copy unavailable";
+        return;
+    }
+
+    navigator.clipboard.writeText(todays_factor()).then(function(){
+        message_element.innerText = "Copied!";
+    }, function(){
+        message_element.innerText = "Copy failed";
+    });
 }
 
 window.onload = function() {
@@ -87,6 +101,6 @@ window.onload = function() {
         if(element != null){
             element.innerText = todays_factor();
         }
-    }, 2000);
+    }, 0);
 };
 

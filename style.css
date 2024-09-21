@@ -29,3 +29,7 @@ nav ul {
 nav li {
     margin: 0 20px;
 }
+
+#copy_message, button {
+    display: inline-block;
+}
