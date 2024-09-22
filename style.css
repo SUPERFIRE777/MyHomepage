@@ -9,6 +9,9 @@ h1 {
     align-items: center;
     display: flex;
 }
+.no-margin {
+    margin: 0px;
+}
 #nav-container {
     width: 100%;
     background-color: #eeeeff;
@@ -17,6 +20,11 @@ div[id^="video"]{
     background-color: gray;
     width: 640px;
     height: 360px;
+}
+.half {
+    width: 50%;
+    float: left;
+    box-sizing: border-box; 
 }
 nav a {
     color: #000000;
