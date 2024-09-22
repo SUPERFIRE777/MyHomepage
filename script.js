@@ -85,7 +85,7 @@ function prime_factor_display(time = false){
     const start = Date.now();
     const prime_factor = prime_factor_display_text(element.value);
     const end = Date.now();
-    if(time){
+    if(time && prime_factor != `値を入力してください` && prime_factor != `対応外の値です`){
         prime_factor_element.innerText = prime_factor + ` (${end - start}ms)`;
     }else{
         prime_factor_element.innerText = prime_factor;
