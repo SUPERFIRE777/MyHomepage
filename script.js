@@ -13,13 +13,24 @@ const videoNames = ["足を拝借.mp4"];
 
 function prime_factorize(num) {
     factor = {};
-    divisor = 2;
+    // 先に2と3で割れるだけ割る
+    while(num % 2 == 0){
+        factor[2] = (factor[2] || 0) + 1;
+        num /= 2;
+    }
+    while(num % 3 == 0){
+        factor[3] = (factor[3] || 0) + 1;
+        num /= 3;
+    }
+    // 5以上の素数は6n+1か6n-1の形で表せる
+    divisor = 5;
     while(num > 1){
         if(num % divisor == 0){
             factor[divisor] = (factor[divisor] || 0) + 1;
             num /= divisor;
         }else{
-            divisor++;
+            // 6n-1なら6n+1にするために+2、6n+1なら6n-1にするために+4
+            divisor += (divisor % 6 == 1) ? 4 : 2;
         }
         if(divisor * divisor > num) break;
     }
