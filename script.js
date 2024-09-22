@@ -28,13 +28,10 @@ function prime_factorize(num) {
         if(num % divisor == 0){
             factor[divisor] = (factor[divisor] || 0) + 1;
             num /= divisor;
+        }else{
+            // 6n-1なら6n+1にするために+2、6n+1なら6n-1にするために+4
+            divisor += (divisor % 6 == 1) ? 4 : 2;
         }
-        div_plus_2 = divisor + 2;
-        if(num % div_plus_2 == 0){
-            factor[div_plus_2] = (factor[div_plus_2] || 0) + 1;
-            num /= div_plus_2;
-        }
-        divisor += 6;
         if(divisor * divisor > num) break;
     }
     if(num > 1) factor[num] = (factor[num] || 0) + 1;
