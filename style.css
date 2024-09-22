@@ -78,3 +78,15 @@ nav li {
 #copy_message{
     font-size: small;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: solid 1px black;
+}
+
+b {
+    background-color: #ffffaa;
+}
