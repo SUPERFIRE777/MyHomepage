@@ -4,10 +4,13 @@ html {
 h1 {
     padding: 10px;
     min-height: 100px;
-    max-width: 100%;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     display: flex;
+}
+.title {
+    align-items: flex-end; /* テキストを下に配置 */
+    display: flex; 
 }
 .no-margin {
     margin: 0px;
@@ -37,6 +40,7 @@ nav ul {
     padding: 0;
     display: flex;
     width: 100%; 
+    justify-content: space-around;
 }
 nav li {
     margin: 0 20px;
@@ -44,4 +48,32 @@ nav li {
 
 #copy_message, button {
     display: inline-block;
+}
+.prime-factor {
+    display: block; /* インライン要素の場合はブロックレベル要素に変換 */
+    width: fit-content; /* 要素の幅に合わせて調整 */
+    font-size: x-large;
+    background-color: white;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 30px;
+    padding: 30px;
+    width: auto;
+    background-image: url('pin_left.png'), url('pin_right.png');  /* 画像のパスを指定 */
+    background-position: left top, right bottom;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 50px auto, 50px auto;
+}
+
+.center {
+    text-align: center;
+}
+
+#time {
+    margin-top: 0px;
+}
+
+#copy_message{
+    font-size: small;
 }
