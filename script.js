@@ -119,6 +119,45 @@ function copy_text_by_id(id){
     });
 }
 
+function number_display(big_int){
+    var units = ["", "万", "億", "兆", "京", "垓", "𥝱", "穣", "溝", "澗", "正", "載", "極", "恒河沙", "阿僧祇", "那由他", "不可思議", "無量大数"];
+    var text = "";
+    while(big_int > 0n){
+        var n = big_int >= 10000n ? `${big_int % 10000n}`.padStart(4, "0"): big_int;
+        text = `${n}${units.shift()}${text}`;
+        big_int /= 10000n;
+    }
+    return text;
+}
+
+function ceil_point(){
+    const result_element = document.getElementById('output_ceil_point');
+    const han = document.getElementById('han').value;
+    const fu = document.getElementById('fu').value;
+    const multi = document.getElementById('multi').value;
+    // BigIntは小数の掛け算ができないので100倍で計算して100で割る
+    const multi_100 = BigInt(Math.round(multi * 100));
+    const point = BigInt(fu) * (2n ** (BigInt(han) + 2n)) * multi_100 / 100n;
+    const ceiled_point = (point + 99n) / 100n * 100n;
+    const child_ron = number_display(ceiled_point * 4n);
+    const parent_ron = number_display(ceiled_point * 6n);
+    const child_tsumo = number_display(ceiled_point) + " / " + number_display(ceiled_point * 2n);
+    const parent_tsumo = number_display(ceiled_point * 2n) + "オール";
+    var text = "";
+    if(han == "" || fu == "" || multi == ""){
+        text = "値を入力してください";
+    }else{
+        text += "<table>";
+        text += "<tr><th></th><th>ロン</th><th>ツモ</th></tr>";
+        text += `<tr><td>親</td><td>${parent_ron}</td><td>${parent_tsumo}</td></tr>`;
+        text += `<tr><td>子</td><td>${child_ron}</td><td>${child_tsumo}</td></tr>`;
+        text += "</table>";
+    }
+    if (result_element != null){
+        result_element.innerHTML = text;
+    }
+}
+
 window.onload = function() {
     document.getElementById('nav-container').innerHTML = navHTML;
 
