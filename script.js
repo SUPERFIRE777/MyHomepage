@@ -138,11 +138,11 @@ function ceil_point(){
     // BigIntは小数の掛け算ができないので100倍で計算して100で割る
     const multi_100 = BigInt(Math.round(multi * 100));
     const point = BigInt(fu) * (2n ** (BigInt(han) + 2n)) * multi_100 / 100n;
-    const ceiled_point = (point + 99n) / 100n * 100n;
-    const child_ron = number_display(ceiled_point * 4n);
-    const parent_ron = number_display(ceiled_point * 6n);
-    const child_tsumo = number_display(ceiled_point) + " / " + number_display(ceiled_point * 2n);
-    const parent_tsumo = number_display(ceiled_point * 2n) + "オール";
+    const ceil = (x) => (x + 99n) / 100n * 100n;
+    const child_ron = number_display(ceil(point * 4n));
+    const parent_ron = number_display(ceil(point * 6n));
+    const child_tsumo = number_display(ceil(point)) + " / " + number_display(ceil(point * 2n));
+    const parent_tsumo = number_display(ceil(point * 2n)) + "オール";
     var text = "";
     if(han == "" || fu == "" || multi == ""){
         text = "値を入力してください";
