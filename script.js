@@ -6,6 +6,7 @@ const navHTML = `
         <li><a href="works.html">作品</a></li>
         <li><a href="tools.html">ツール</a></li>
         <li><a href="math.html">数学</a></li>
+        <li><a href="omikuji.html">おみくじ</a></li>
     </ul>
 </nav>
 `;
