@@ -159,22 +159,31 @@ function ceil_point(){
     }
 }
 
-window.onload = function() {
-    document.getElementById('nav-container').innerHTML = navHTML;
+async function fetch_images(){
+    const suits = ["man", "pin", "sou", "ji"];
 
-    var element = document.getElementById("load");
-    if(element != null){
-        for(let i of ["man", "pin", "sou", "ji"]){
-            for(let j = 1; j <= 9; j++){
-                element.innerHTML += `<img src="pai-images/${i}${j}-66-90-l-emb.png" alt="" style="width:0px; margin:0px;">`;
-                if(i == "ji" && j == 7){
-                    break;
-                }
+    try {
+        // 各画像URLを生成し、非同期で読み込む
+        for (let suit of suits) {
+            for (let j = 1; j <= 9; j++) {
+                if (suit === "ji" && j === 7) break;
+                const url = `pai-images/${suit}${j}-66-90-l-emb.png`;
+                
+                // 非同期に画像を読み込み
+                await fetch(url);
             }
         }
-    }
 
-    element.remove();
+        console.log("すべての画像がキャッシュされました");
+    } catch (error) {
+        console.error("画像のキャッシュに失敗しました", error);
+    }
+}
+
+window.onload = async function() {
+    document.getElementById('nav-container').innerHTML = navHTML;
+
+    await fetch_images();
 
     for(let i=0; i<videoNames.length; i++){
         var element = document.getElementById(`video${i}`);
