@@ -159,8 +159,50 @@ function ceil_point(){
     }
 }
 
-window.onload = function() {
+async function cache_images(){
+    const suits = ["man", "pin", "sou", "ji"];
+    const cacheName = "pai-images-cache";
+
+    if ('caches' in window) {
+        try {
+            const cache = await caches.open(cacheName);
+
+            // 各画像URLを生成し、キャッシュに追加
+            for (let suit of suits) {
+                for (let j = 1; j <= 9; j++) {
+                    if (suit === "ji" && j === 7) break;
+                    const url = `pai-images/${suit}${j}-66-90-l-emb.png`;
+                    await cache.add(url);
+                }
+            }
+
+            console.log("画像がキャッシュされました");
+        } catch (error) {
+            console.error("画像のキャッシュに失敗しました", error);
+        }
+    } else {
+        console.warn("このブラウザはキャッシュAPIをサポートしていません");
+    }
+}
+
+window.onload = async function() {
     document.getElementById('nav-container').innerHTML = navHTML;
+
+    cache_images();
+
+    var element = document.getElementById("load");
+    if(element != null){
+        for(let i of ["man", "pin", "sou", "ji"]){
+            for(let j = 1; j <= 9; j++){
+                element.innerHTML += `<img src="pai-images/${i}${j}-66-90-l-emb.png" alt="" style="width:0px; margin:0px;">`;
+                if(i == "zi" && j == 7){
+                    break;
+                }
+            }
+        }
+    }
+
+    element.remove();
 
     for(let i=0; i<videoNames.length; i++){
         var element = document.getElementById(`video${i}`);

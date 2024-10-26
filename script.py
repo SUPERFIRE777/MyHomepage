@@ -3,7 +3,7 @@ import asyncio
 
 async def install_library():
     await micropip.install("mahjong")
-        
+
 def omikuji():
     import random
     from js import document
