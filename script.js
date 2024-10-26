@@ -183,7 +183,11 @@ async function fetch_images(){
 window.onload = async function() {
     document.getElementById('nav-container').innerHTML = navHTML;
 
-    await fetch_images();
+    var element = document.getElementById('load');
+    
+    if(element != null){
+        await fetch_images();
+    }
 
     for(let i=0; i<videoNames.length; i++){
         var element = document.getElementById(`video${i}`);
