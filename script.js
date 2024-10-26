@@ -183,6 +183,13 @@ async function fetch_images(){
 window.onload = async function() {
     document.getElementById('nav-container').innerHTML = navHTML;
 
+    const h1Element = document.querySelector('h1');
+    h1Element.style.backgroundImage = "url('background.jpeg')";
+    h1Element.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+    h1Element.style.backgroundBlendMode = "lighten";
+    h1Element.style.backgroundSize = "cover";
+    h1Element.style.backgroundPosition = "center";
+
     var element = document.getElementById('load');
     
     if(element != null){
@@ -215,11 +222,5 @@ window.onload = async function() {
         }
     }, 0);
 
-    const h1Element = document.querySelector('h1');
-    h1Element.style.backgroundImage = "url('background.jpeg')";
-    h1Element.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
-    h1Element.style.backgroundBlendMode = "lighten";
-    h1Element.style.backgroundSize = "cover";
-    h1Element.style.backgroundPosition = "center";
 };
 
