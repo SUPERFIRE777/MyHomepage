@@ -167,7 +167,7 @@ window.onload = function() {
         for(let i of ["man", "pin", "sou", "ji"]){
             for(let j = 1; j <= 9; j++){
                 element.innerHTML += `<img src="pai-images/${i}${j}-66-90-l-emb.png" alt="" style="width:0px; margin:0px;">`;
-                if(i == "zi" && j == 7){
+                if(i == "ji" && j == 7){
                     break;
                 }
             }
