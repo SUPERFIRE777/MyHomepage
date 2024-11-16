@@ -123,6 +123,9 @@ function copy_text_by_id(id){
 function number_display(big_int){
     var units = ["", "万", "億", "兆", "京", "垓", "𥝱", "穣", "溝", "澗", "正", "載", "極", "恒河沙", "阿僧祇", "那由他", "不可思議", "無量大数"];
     var text = "";
+    if(big_int >= 10n ** 72n){
+        return "(" + number_display(big_int / 10n ** 68n) + ")無量大数" + number_display(big_int % 10n ** 68n);
+    }
     while(big_int > 0n){
         var n = big_int >= 10000n ? `${big_int % 10000n}`.padStart(4, "0"): big_int;
         text = `${n}${units.shift()}${text}`;
