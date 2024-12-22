@@ -5,6 +5,8 @@ async def install_library():
     await micropip.install("mahjong")
 
 def omikuji():
+    print("hello!")
+    
     import random
     from js import document
     from mahjong.tile import TilesConverter
