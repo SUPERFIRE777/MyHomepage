@@ -183,6 +183,28 @@ async function fetch_images(){
     }
 }
 
+function zfill(s, n){
+    return s.toString().padStart(n, "0")
+}
+
+function timeDisplay(second){
+    var sec = second % 60;
+    var min = Math.floor((second % 3600) / 60);
+    var hour = Math.floor((second % 86400) / 3600);
+    var day = Math.floor(second / 86400);
+
+    if(second >= 86400){
+        return `${day}日${zfill(hour, 2)}時間${zfill(min, 2)}分${zfill(sec, 2)}秒`;
+    }
+    if(second >= 3600){
+        return `${hour}時間${zfill(min, 2)}分${zfill(sec, 2)}秒`;
+    }
+    if(second >= 60){
+        return `${min}分${zfill(sec, 2)}秒`;
+    }
+    return `${sec}秒`;
+}
+
 window.onload = async function() {
     document.getElementById('nav-container').innerHTML = navHTML;
 
@@ -223,17 +245,9 @@ window.onload = async function() {
         if(element != null){
             var newYear = new Date(2025, 0, 1);
             var now = new Date();
-            var second = Math.floor((newYear - now) / 1000);
+            var second = Math.ceil((newYear - now) / 1000);
             if(second > 0){
-                var dispSec = Math.floor(second % 60);
-                var dispMin = Math.floor((second % 3600) / 60);
-                var dispHour = Math.floor((second % 86400) / 3600);
-                var dispDay = Math.floor(second / 86400);
-                var disp = `${dispSec}秒`
-                if(dispMin > 0) disp = `${dispMin}分${disp}`;
-                if(dispHour > 0) disp = `${dispHour}時間${disp}`;
-                if(dispDay > 0) disp = `${dispDay}日${disp}`;
-                element.innerText = disp;
+                element.innerText = timeDisplay(second);
             }else{
                 element.innerText = "0秒\nHappy New Year!!";
             }
