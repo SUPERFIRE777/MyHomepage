@@ -219,6 +219,28 @@ window.onload = async function() {
     }, 0);
 
     setInterval(function(){
+        var element = document.getElementById('countdown');
+        if(element != null){
+            var newYear = new Date(2025, 0, 1);
+            var now = new Date();
+            var second = Math.floor((newYear - now) / 1000);
+            if(second > 0){
+                var dispSec = Math.floor(second % 60);
+                var dispMin = Math.floor((second % 3600) / 60);
+                var dispHour = Math.floor((second % 86400) / 3600);
+                var dispDay = Math.floor(second / 86400);
+                var disp = `${dispSec}秒`
+                if(dispMin > 0) disp = `${dispMin}分${disp}`;
+                if(dispHour > 0) disp = `${dispHour}時間${disp}`;
+                if(dispDay > 0) disp = `${dispDay}日${disp}`;
+                element.innerText = disp;
+            }else{
+                element.innerText = "0秒\nHappy New Year!!";
+            }
+        }
+    }, 0);
+
+    setInterval(function(){
         var element = document.getElementById('factor');
         if(element != null){
             element.innerText = todays_factor();
