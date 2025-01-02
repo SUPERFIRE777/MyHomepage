@@ -243,7 +243,7 @@ window.onload = async function() {
     setInterval(function(){
         var element = document.getElementById('countdown');
         if(element != null){
-            var newYear = new Date(2025, 0, 1);
+            var newYear = new Date(2026, 0, 1);
             var now = new Date();
             var second = Math.ceil((newYear - now) / 1000);
             if(second > 0){
