@@ -243,8 +243,12 @@ window.onload = async function() {
     setInterval(function(){
         var element = document.getElementById('countdown');
         if(element != null){
-            var newYear = new Date(2026, 0, 1);
             var now = new Date();
+            if(now.getMonth() == 0 && now.getDate() == 1){
+                var newYear = new Date(now.getFullYear(), 0, 1);
+            }else{
+                var newYear = new Date(now.getFullYear() + 1, 0, 1);
+            }
             var second = Math.ceil((newYear - now) / 1000);
             if(second > 0){
                 element.innerText = timeDisplay(second);
