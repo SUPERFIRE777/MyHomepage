@@ -244,16 +244,18 @@ window.onload = async function() {
         var element = document.getElementById('countdown');
         if(element != null){
             var now = new Date();
-            if(now.getMonth() == 0 && now.getDate() == 1){
+
+            var NintendoDirect = new Date(2025, 3, 17, 22); 
+            /*if(now.getMonth() == 0 && now.getDate() == 1){
                 var newYear = new Date(now.getFullYear(), 0, 1);
             }else{
                 var newYear = new Date(now.getFullYear() + 1, 0, 1);
-            }
-            var second = Math.ceil((newYear - now) / 1000);
+            }*/
+            var second = Math.ceil((NintendoDirect/*newYear*/ - now) / 1000);
             if(second > 0){
                 element.innerText = timeDisplay(second);
             }else{
-                element.innerText = "0秒\nHappy New Year!!";
+                element.innerText = "0秒\nYeah!" // "0秒\nHappy New Year!!";
             }
         }
     }, 0);
