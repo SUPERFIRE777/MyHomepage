@@ -245,7 +245,7 @@ window.onload = async function() {
         if(element != null){
             var now = new Date();
 
-            var NintendoDirect = new Date(2025, 3, 17, 22); 
+            var target = new Date(2025, 3, 24); 
             /*if(now.getMonth() == 0 && now.getDate() == 1){
                 var newYear = new Date(now.getFullYear(), 0, 1);
             }else{
@@ -255,7 +255,7 @@ window.onload = async function() {
             if(second > 0){
                 element.innerText = timeDisplay(second);
             }else{
-                element.innerText = "0秒\nYeah!" // "0秒\nHappy New Year!!";
+                element.innerText = "0秒" // "0秒\nHappy New Year!!";
             }
         }
     }, 0);
