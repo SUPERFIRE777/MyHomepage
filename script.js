@@ -251,7 +251,7 @@ window.onload = async function() {
             }else{
                 var newYear = new Date(now.getFullYear() + 1, 0, 1);
             }*/
-            var second = Math.ceil((NintendoDirect/*newYear*/ - now) / 1000);
+            var second = Math.ceil((target/*newYear*/ - now) / 1000);
             if(second > 0){
                 element.innerText = timeDisplay(second);
             }else{
