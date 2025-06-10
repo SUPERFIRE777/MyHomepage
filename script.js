@@ -245,7 +245,7 @@ window.onload = async function() {
         if(element != null){
             var now = new Date();
 
-            var target = new Date(2025, 5, 5); 
+            var target = new Date(2025, 9, 16); 
             /*if(now.getMonth() == 0 && now.getDate() == 1){
                 var newYear = new Date(now.getFullYear(), 0, 1);
             }else{
