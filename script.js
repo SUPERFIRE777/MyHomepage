@@ -234,11 +234,15 @@ function calculate_rarity(){
 
     const div = document.getElementById("output_factor_rarity");
 
+    if(input.value == ""){
+        div.innerHTML = "日付を入力してください";
+        return;
+    }
+
     if(input_value < 20000101 || input_value > 20991231){
         div.innerHTML = "2000/1/1～2099/12/31の範囲で入力してください";
         return;
     }
-    
 
     if(Object.entries(factor).length == 1){
         const count = data["prime_count"];
