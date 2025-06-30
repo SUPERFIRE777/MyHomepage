@@ -227,14 +227,10 @@ function table_line(texts, count, day_count, max_info){
 
 function calculate_rarity(){
     const input = document.getElementById("date");
-    const input_value = input.value.replace(/\-/g, "");
-    const factor = prime_factorize(input_value);
-    const day_count = data["day_count"];
-    const max_info = data["max_info"];
-
+    const input_value = Number(input.value.replace(/\-/g, ""));
     const div = document.getElementById("output_factor_rarity");
 
-    if(input.value == ""){
+    if(!input_value){
         div.innerHTML = "日付を入力してください";
         return;
     }
@@ -244,7 +240,12 @@ function calculate_rarity(){
         return;
     }
 
-    if(Object.entries(factor).length == 1){
+    const factor = prime_factorize(input_value);
+    const day_count = data["day_count"];
+    const max_info = data["max_info"];
+    const entries = Object.entries(factor);
+
+    if(entries.length == 1 && entries[0][0] == 1){
         const count = data["prime_count"];
         var html = '<table class="center"><tr><th>結果</th><th>レア度</th><th>出現回数</th><th>情報量[bit]</th></tr>';
         html += table_line(["素数"], count, day_count, max_info);
@@ -256,7 +257,6 @@ function calculate_rarity(){
     var html = '<table class="center"><tr><th>素数</th><th>指数</th><th>レア度</th><th>出現回数</th><th>情報量[bit]</th></tr>';
     for([prime, exponent] of Object.entries(factor)){
         const count = data[prime][exponent];
-        const info = -Math.log2(count / day_count);
         html += table_line([prime, exponent], count, day_count, max_info);
     }
 
