@@ -245,7 +245,7 @@ function calculate_rarity(){
     const max_info = data["max_info"];
     const entries = Object.entries(factor);
 
-    if(entries.length == 1 && entries[0][0] == 1){
+    if(entries.length == 1 && entries[0][1] == 1){
         const count = data["prime_count"];
         var html = '<table class="center"><tr><th>結果</th><th>レア度</th><th>出現回数</th><th>情報量[bit]</th></tr>';
         html += table_line(["素数"], count, day_count, max_info);
