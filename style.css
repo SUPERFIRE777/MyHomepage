@@ -72,6 +72,12 @@ nav li {
     height: fit-content;
 }
 
+.rarity-bar {
+    height: 1em;
+    border-radius: 4px;
+    margin: 2px 0;
+}
+
 #time {
     margin-top: 0px;
 }

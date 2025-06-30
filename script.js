@@ -13,7 +13,7 @@ const navHTML = `
 
 const videoNames = ["足を拝借.mp4"];
 
-function prime_factorize(num) {
+function prime_factorize(num){
     factor = {};
     // 先に2と3で割れるだけ割る
     while(num % 2 == 0){
@@ -37,6 +37,12 @@ function prime_factorize(num) {
         if(divisor * divisor > num) break;
     }
     if(num > 1) factor[num] = (factor[num] || 0) + 1;
+
+    return factor;
+}
+
+function prime_factorize_text(num) {
+    factor = prime_factorize(num);
     texts = [];
     upper = "⁰¹²³⁴⁵⁶⁷⁸⁹";
     for (const [prime, power] of Object.entries(factor)) {
@@ -66,7 +72,7 @@ function getYYYYMMDD() {
 
 function todays_factor(){
     var yyyymmdd = getYYYYMMDD();
-    var prime_factor = prime_factorize(parseInt(yyyymmdd));
+    var prime_factor = prime_factorize_text(parseInt(yyyymmdd));
     if(yyyymmdd == prime_factor){
         return `${yyyymmdd}は素数です！`;
     }else{
@@ -76,14 +82,13 @@ function todays_factor(){
 
 function prime_factor_display_text(string){
     var int = parseInt(string);
-    console.log()
     if (string == ""){
         return `値を入力してください`;
     }
     if (isNaN(int) || int < 2 || int > Number.MAX_SAFE_INTEGER){
         return `対応外の値です`;
     }
-    var prime_factor = prime_factorize(int);
+    var prime_factor = prime_factorize_text(int);
     if(int == prime_factor){
         return `${int}は素数です！`;
     }else{
@@ -151,7 +156,7 @@ function ceil_point(){
     if(han == "" || fu == "" || multi == ""){
         text = "値を入力してください";
     }else{
-        text += "<table>";
+        text += '<table class="center">';
         text += "<tr><th></th><th>ロン</th><th>ツモ</th></tr>";
         text += `<tr><td>親</td><td>${parent_ron}</td><td>${parent_tsumo}</td></tr>`;
         text += `<tr><td>子</td><td>${child_ron}</td><td>${child_tsumo}</td></tr>`;
@@ -203,6 +208,69 @@ function timeDisplay(second){
         return `${min}分${zfill(sec, 2)}秒`;
     }
     return `${sec}秒`;
+}
+
+function rarity_bar(rarity){
+    const hue = 240 - (rarity * 2.4);
+    return `<div class="rarity-bar" style="width: ${rarity}%; background-color: hsl(${hue}, 100%, 60%)"></div>`
+}
+
+function table_line(texts, count, day_count, max_info){
+    const info = -Math.log2(count / day_count);
+    const rarity = 100 * info / max_info;
+    let html = "<tr>";
+    for(let text of texts){
+        html += `<td>${text}</td>`;
+    }
+    return html + `<td>${rarity_bar(rarity)}${rarity.toFixed(4)}</td><td>${count}</td><td>${info.toFixed(4)}</td>`;
+}
+
+function calculate_rarity(){
+    const input = document.getElementById("date");
+    const input_value = input.value.replace(/\-/g, "");
+    const factor = prime_factorize(input_value);
+    const day_count = data["day_count"];
+    const max_info = data["max_info"];
+
+    const div = document.getElementById("output_factor_rarity");
+
+    if(input_value < 20000101 || input_value > 20991231){
+        div.innerHTML = "2000/1/1～2099/12/31の範囲で入力してください";
+        return;
+    }
+    
+
+    if(Object.entries(factor).length == 1){
+        const count = data["prime_count"];
+        var html = '<table class="center"><tr><th>結果</th><th>レア度</th><th>出現回数</th><th>情報量[bit]</th></tr>';
+        html += table_line(["素数"], count, day_count, max_info);
+        html += "</table>"
+        div.innerHTML = html;
+        return;
+    }
+
+    var html = '<table class="center"><tr><th>素数</th><th>指数</th><th>レア度</th><th>出現回数</th><th>情報量[bit]</th></tr>';
+    for([prime, exponent] of Object.entries(factor)){
+        const count = data[prime][exponent];
+        const info = -Math.log2(count / day_count);
+        html += table_line([prime, exponent], count, day_count, max_info);
+    }
+
+    html += "</table>";
+    div.innerHTML = html;
+}
+
+function toggleDetails() {
+    const button = document.getElementById("toggle-button");
+    const text = document.getElementById("details-text");
+
+    if (text.style.display === "none") {
+        text.style.display = "block";
+        button.innerText = "[-]閉じる";
+    } else {
+        text.style.display = "none";
+        button.innerText = "[+]詳しく";
+    }
 }
 
 window.onload = async function() {
@@ -266,6 +334,15 @@ window.onload = async function() {
             element.innerText = todays_factor();
         }
     }, 0);
-
 };
 
+window.addEventListener("DOMContentLoaded", function() {
+    const input = document.getElementById("date");
+    const today = new Date();
+
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+
+    input.value = `${yyyy}-${mm}-${dd}`;
+});
