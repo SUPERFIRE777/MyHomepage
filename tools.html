@@ -27,7 +27,7 @@
                 9999億以上も計算できます。</p>
             </p>
             <input type="number" id="han" min="1" max="200">飜 <br>
-            <input type="number" id="fu" min="20" max="160">符 <br>
+            <input type="number" id="fu" min="20" max="160" step="5">符 <br>
             × <input type="number" id="multi" min="1" value="1" step="0.5"> <br>
             <button onclick="ceil_point()">計算</button>
             <div id="output_ceil_point"></div>
@@ -35,12 +35,12 @@
             <h3>レア度計算</h3>
             <p>指定された日の素因数分解に現れる因数がどれだけレアかを計算します。<br>
             ただし、YYYYMMDDが素数である場合はその事象のレア度を計算します。<br>
-            <button id="toggle-button" onclick="toggleDetails()">[+]詳しく</button>
-            <div id="details-text">
+            <details>
+                <summary>詳しく</summary>
                 集計期間: 2000/01/01～2099/12/31 (36,525日間)<br>
                 出現回数: 素数pの指数がちょうどnになる日数<br>
                 レア度 = 情報量 ÷ 最大情報量 × 100
-            </div>
+            </details>
             <input type="date" id="date" min="2000-01-01" max="2099-12-31" value="">
             <button onclick="calculate_rarity()">計算</button>
             <div id="output_factor_rarity"></div>

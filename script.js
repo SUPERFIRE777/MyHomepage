@@ -264,19 +264,6 @@ function calculate_rarity(){
     div.innerHTML = html;
 }
 
-function toggleDetails() {
-    const button = document.getElementById("toggle-button");
-    const text = document.getElementById("details-text");
-
-    if (text.style.maxHeight === "0px" || !text.style.maxHeight) {
-        text.style.maxHeight = text.scrollHeight + "px";
-        button.innerText = "[-]閉じる";
-    } else {
-        text.style.maxHeight = "0px";
-        button.innerText = "[+]詳しく";
-    }
-}
-
 window.onload = async function() {
     document.getElementById('nav-container').innerHTML = navHTML;
 
