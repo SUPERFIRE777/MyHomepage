@@ -268,11 +268,11 @@ function toggleDetails() {
     const button = document.getElementById("toggle-button");
     const text = document.getElementById("details-text");
 
-    if (text.style.display === "none") {
-        text.style.display = "block";
+    if (text.style.maxHeight === "0px" || !text.style.maxHeight) {
+        text.style.maxHeight = text.scrollHeight + "px";
         button.innerText = "[-]閉じる";
     } else {
-        text.style.display = "none";
+        text.style.maxHeight = "0px";
         button.innerText = "[+]詳しく";
     }
 }
