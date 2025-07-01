@@ -78,18 +78,40 @@ nav li {
     margin: 2px 0;
 }
 
+.card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid;
+    background-color: #f9f9f9;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.card:hover{
+    background-color: #9f9f9f;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.card p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
 #time {
     margin-top: 0px;
 }
 
 #copy_message{
     font-size: small;
-}
-
-#details-text {
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    max-height: 0;
 }
 
 table {
@@ -102,4 +124,15 @@ table th, table td {
 
 b {
     background-color: #ffffaa;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tool-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }

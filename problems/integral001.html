@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>積分001</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon"> 
+        <script src="/script.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+    <body>
+        <h1>SUPERFIRE777のサイト</h1>
+        <div id="nav-container"></div>
+        <h2 class="center">積分001</h2>
+        <p class="center">\(f(x)=x^x\)の原始関数の1つを\(F(x)\)とする。このとき、以下の不定積分を\(F\)を用いて表せ。</p>
+        $$\int e^{x(e^x+1)} \dd x$$
+        <details class="center">
+            <summary>解答</summary>
+            $$
+            \begin{aligned}
+            \int e^{x(e^x+1)} \dd x &= \int e^{xe^x+x} \dd x \\
+            &= \int (e^x)^{e^x} \cdot e^x \dd x
+            \end{aligned}
+            $$
+            <p class="center">ここで、\(e^x=t\)とおくと、\(e^x \dd x = \dd t\)</p>
+            $$
+            \begin{aligned}
+            (与式) &= \int t^t \dd t \\
+            &= F(t) + C \\
+            &= \boxed{F(e^x) + C \, (Cは積分定数)}
+            \end{aligned}
+            $$
+        </details>
+    </body>    
+</html>

@@ -1,17 +1,24 @@
 const navHTML = `
 <nav>
     <ul>
-        <li><a href="index.html">ホーム</a></li>
-        <li><a href="introduction.html">自己紹介</a></li>
-        <li><a href="works.html">作品</a></li>
-        <li><a href="tools.html">ツール</a></li>
-        <li><a href="math.html">数学</a></li>
-        <li><a href="omikuji.html">おみくじ</a></li>
+        <li><a href="/index.html">ホーム</a></li>
+        <li><a href="/introduction.html">自己紹介</a></li>
+        <li><a href="/articles.html">記事</a></li>
+        <li><a href="/tools.html">ツール</a></li>
+        <li><a href="/problems.html">自作問題</a></li>
     </ul>
 </nav>
 `;
 
 const videoNames = ["足を拝借.mp4"];
+
+MathJax = {
+  tex: {
+    macros: {
+      dd: '\\mathrm{d}'
+    }
+  }
+};
 
 function prime_factorize(num){
     factor = {};
@@ -268,7 +275,7 @@ window.onload = async function() {
     document.getElementById('nav-container').innerHTML = navHTML;
 
     const h1Element = document.querySelector('h1');
-    h1Element.style.backgroundImage = "url('background.jpeg')";
+    h1Element.style.backgroundImage = "url('/background.jpeg')";
     h1Element.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
     h1Element.style.backgroundBlendMode = "lighten";
     h1Element.style.backgroundSize = "cover";
@@ -335,5 +342,7 @@ window.addEventListener("DOMContentLoaded", function() {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
 
-    input.value = `${yyyy}-${mm}-${dd}`;
+    if(input != null){
+        input.value = `${yyyy}-${mm}-${dd}`;
+    }
 });

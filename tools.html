@@ -14,36 +14,24 @@
         <div id="nav-container"></div> 
         <div class="center">
             <h2>ツール</h2>
-            <h3>素因数分解</h3>
-            <p>2以上<ruby>9007199254740991<rt>9007兆1992億5474万0991</rt></ruby>以下の整数に対応しています。<br>
-            大きい素数とかを入力すると少し時間がかかります。<br>
-            制約内の最大の素数は<ruby>9007199254740881<rt>9007兆1992億5474万0881</rt></ruby>です。</p>
-            <input type="number" id="input_number" min="2" max="9007199254740991">
-            <button onclick="prime_factor_display(true)">素因数分解</button>
-            <div id="output_prime_factor"></div>
-
-            <h3>青天井</h3>
-            <p>麻雀の青天井ルールの計算を行います。<br>
-                9999億以上も計算できます。</p>
-            </p>
-            <input type="number" id="han" min="1" max="200">飜 <br>
-            <input type="number" id="fu" min="20" max="160" step="5">符 <br>
-            × <input type="number" id="multi" min="1" value="1" step="0.5"> <br>
-            <button onclick="ceil_point()">計算</button>
-            <div id="output_ceil_point"></div>
-
-            <h3>レア度計算</h3>
-            <p>指定された日の素因数分解に現れる因数がどれだけレアかを計算します。<br>
-            ただし、YYYYMMDDが素数である場合はその事象のレア度を計算します。<br>
-            <details>
-                <summary>詳しく</summary>
-                集計期間: 2000/01/01～2099/12/31 (36,525日間)<br>
-                出現回数: 素数pの指数がちょうどnになる日数<br>
-                レア度 = 情報量 ÷ 最大情報量 × 100
-            </details>
-            <input type="date" id="date" min="2000-01-01" max="2099-12-31" value="">
-            <button onclick="calculate_rarity()">計算</button>
-            <div id="output_factor_rarity"></div>
+            <div class="tool-container">
+                <a href="tools/prime_factorlize.html" class="card">
+                    <h3>素因数分解</h3>
+                    <p>2<sup>53</sup>-1までの整数に対応した素因数分解</p>
+                </a>
+                <a href="tools/score_calc.html" class="card">
+                    <h3>青天井</h3>
+                    <p>麻雀の青天井ルールの点数計算</p>
+                </a>
+                <a href="tools/rarity_calc.html" class="card">
+                    <h3>レア度計算</h3>
+                    <p>日付の素因数分解に含まれる因数のレア度を計算</p>
+                </a>
+                <a href="tools/omikuji.html" class="card">
+                    <h3>配牌おみくじ</h3>
+                    <p>配牌がいくらでも引けるよ！</p>
+                </a>
+            </div>
         </div>
     </body>    
 </html>

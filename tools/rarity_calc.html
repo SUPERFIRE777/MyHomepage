@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ツール</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <script src="total.js"></script>
+        <script src="/script.js"></script>
+    </head>
+    <body>
+        <h1>SUPERFIRE777のサイト</h1>
+        <div id="nav-container"></div> 
+        <div class="center">
+            <h2>レア度計算</h2>
+            <p>指定された日の素因数分解に現れる因数がどれだけレアかを計算します。<br>
+            ただし、YYYYMMDDが素数である場合はその事象のレア度を計算します。<br>
+            <details>
+                <summary>詳しく</summary>
+                集計期間: 2000/01/01～2099/12/31 (36,525日間)<br>
+                出現回数: 素数pの指数がちょうどnになる日数<br>
+                レア度 = 情報量 ÷ 最大情報量 × 100
+            </details>
+            <input type="date" id="date" min="2000-01-01" max="2099-12-31" value="">
+            <button onclick="calculate_rarity()">計算</button>
+            <div id="output_factor_rarity"></div>
+        </div>
+    </body>    
+</html>
