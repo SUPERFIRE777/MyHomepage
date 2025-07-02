@@ -1,7 +1,11 @@
+import { pageTitleMap } from "/title-map.js";
+
+const homeLink = `<a href="/index.html">ホーム</a>`;
+
 const navHTML = `
 <nav>
     <ul>
-        <li><a href="/index.html">ホーム</a></li>
+        <li>${homeLink}</li>
         <li><a href="/introduction.html">自己紹介</a></li>
         <li><a href="/articles.html">記事</a></li>
         <li><a href="/tools.html">ツール</a></li>
@@ -12,16 +16,17 @@ const navHTML = `
 
 const videoNames = ["足を拝借.mp4"];
 
-MathJax = {
-  tex: {
-    macros: {
-      dd: '\\mathrm{d}'
+window.MathJax = {
+    tex: {
+        macros: {
+            dd: '\\mathrm{d}'
+        }
     }
-  }
 };
 
+
 function prime_factorize(num){
-    factor = {};
+    let factor = {};
     // 先に2と3で割れるだけ割る
     while(num % 2 == 0){
         factor[2] = (factor[2] || 0) + 1;
@@ -32,7 +37,7 @@ function prime_factorize(num){
         num /= 3;
     }
     // 5以上の素数は6n+1か6n-1の形で表せる
-    divisor = 5;
+    let divisor = 5;
     while(num > 1){
         if(num % divisor == 0){
             factor[divisor] = (factor[divisor] || 0) + 1;
@@ -49,14 +54,14 @@ function prime_factorize(num){
 }
 
 function prime_factorize_text(num) {
-    factor = prime_factorize(num);
-    texts = [];
-    upper = "⁰¹²³⁴⁵⁶⁷⁸⁹";
+    let factor = prime_factorize(num);
+    let texts = [];
+    const upper = "⁰¹²³⁴⁵⁶⁷⁸⁹";
     for (const [prime, power] of Object.entries(factor)) {
-        text = `${prime}`;
+        let text = `${prime}`;
         if(power > 1){
-            p = power;
-            power_text = "";
+            let p = power;
+            let power_text = "";
             while(p > 0){
                 power_text += upper[p % 10];
                 p = Math.floor(p / 10);
@@ -182,7 +187,7 @@ async function fetch_images(){
         for (let suit of suits) {
             for (let j = 1; j <= 9; j++) {
                 if (suit === "ji" && j === 7) break;
-                const url = `pai-images/${suit}${j}-66-90-l-emb.png`;
+                const url = `/pai-images/${suit}${j}-66-90-l-emb.png`;
                 
                 // 非同期に画像を読み込み
                 await fetch(url);
@@ -271,15 +276,29 @@ function calculate_rarity(){
     div.innerHTML = html;
 }
 
+function generate_breadcrumbs(){
+    const path = window.location.pathname;
+    const split_path = path.split("/").filter(x => x != "");
+    const element = document.getElementById("breadcrumbs");
+
+    if(element == null) return;
+
+    let links = [homeLink];
+    for(let [idx, part] of split_path.entries()){
+        part = part.replace(".html", "")
+        const title = pageTitleMap[part] ?? part
+        if(idx == split_path.length - 1){
+            links = links.concat([`<span>${title}</span>`]);
+        }else{
+            links = links.concat([`<a href="/${part}.html">${title}</a>`]);
+        }
+    }
+
+    element.innerHTML = links.join("");
+}
+
 window.onload = async function() {
     document.getElementById('nav-container').innerHTML = navHTML;
-
-    const h1Element = document.querySelector('h1');
-    h1Element.style.backgroundImage = "url('/background.jpeg')";
-    h1Element.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
-    h1Element.style.backgroundBlendMode = "lighten";
-    h1Element.style.backgroundSize = "cover";
-    h1Element.style.backgroundPosition = "center";
 
     var element = document.getElementById('load');
     
@@ -345,4 +364,6 @@ window.addEventListener("DOMContentLoaded", function() {
     if(input != null){
         input.value = `${yyyy}-${mm}-${dd}`;
     }
+
+    generate_breadcrumbs();
 });

@@ -8,6 +8,11 @@ h1 {
     align-items: center;
     display: flex;
     align-items: flex-end;
+    background-image: url('/background.jpeg');
+    background-color: rgba(255, 255, 255, 0.9);
+    background-blend-mode: lighten;
+    background-size: cover;
+    background-position: center;
 }
 .no-margin {
     margin: 0px;
@@ -114,6 +119,41 @@ nav li {
     font-size: small;
 }
 
+/* パンくずリスト全体のコンテナ */
+#breadcrumbs {
+    background-color: #eeffee; /* 背景色を少しつける */
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    display: flex; /* 中の要素を横並びにする */
+    align-items: center; /* 上下中央揃え */
+    flex-wrap: wrap; /* 画面が狭い時に折り返す */
+}
+
+/* 区切り文字を追加する（一番重要な部分） */
+#breadcrumbs > *:not(:first-child)::before {
+    content: '>'; /* 区切り文字 */
+    margin: 0 10px; /* 区切り文字の左右に余白 */
+    color: #888;
+}
+
+/* リンクのスタイル */
+#breadcrumbs a {
+    color: #007bff;
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+}
+
+#breadcrumbs a:hover {
+    text-decoration: underline; /* マウスを乗せたら下線を表示 */
+}
+
+/* 現在のページ（最後の項目）のスタイル */
+#breadcrumbs span {
+    color: #333;
+    font-weight: bold;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -136,3 +176,4 @@ summary {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
+
