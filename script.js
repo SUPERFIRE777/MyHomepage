@@ -259,15 +259,15 @@ function calculate_rarity(){
 
     if(entries.length == 1 && entries[0][1] == 1){
         const count = data["prime_count"];
-        var html = '<table class="center"><tr><th>結果</th><th>レア度</th><th>出現回数</th><th>情報量[bit]</th></tr>';
+        let html = '<table class="center"><tr><th>結果</th><th>レア度</th><th>出現回数</th><th>情報量[bit]</th></tr>';
         html += table_line(["素数"], count, day_count, max_info);
         html += "</table>"
         div.innerHTML = html;
         return;
     }
 
-    var html = '<table class="center"><tr><th>素数</th><th>指数</th><th>レア度</th><th>出現回数</th><th>情報量[bit]</th></tr>';
-    for([prime, exponent] of Object.entries(factor)){
+    let html = '<table class="center"><tr><th>素数</th><th>指数</th><th>レア度</th><th>出現回数</th><th>情報量[bit]</th></tr>';
+    for(const [prime, exponent] of Object.entries(factor)){
         const count = data[prime][exponent];
         html += table_line([prime, exponent], count, day_count, max_info);
     }
@@ -366,4 +366,28 @@ window.addEventListener("DOMContentLoaded", function() {
     }
 
     generate_breadcrumbs();
+
+    // 素因数分解ボタン
+    const factorButton = document.getElementById('prime-factor-button');
+    if(factorButton){
+        factorButton.addEventListener('click', function(){
+            prime_factor_display(true);
+        });
+    }
+
+    // レア度計算ボタン
+    const rarityButton = document.getElementById('rarity-button');
+    if(rarityButton){
+        rarityButton.addEventListener('click', function(){
+            calculate_rarity();
+        });
+    }
+
+    // 青天井計算ボタン
+    const ceilButton = document.getElementById('ceil-button');
+    if(ceilButton){
+        ceilButton.addEventListener('click', function(){
+            ceil_point();
+        });
+    }
 });
