@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>積分002</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon"> 
+        <script src="/use-MathJax.js"></script>
+        <script type="module" src="/script.js"></script>
+        <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+    <body>
+        <h1>SUPERFIRE777のサイト</h1>
+        <div id="nav-container"></div>
+        <div id="breadcrumbs"></div>
+        <h2 class="center">積分002</h2>
+        <p class="center">以下の不定積分を求めよ。</p>
+        $$\int \frac{\ln \sin x}{\tan x} \dd x$$
+        <details class="center">
+            <summary>解答</summary>
+            $$
+            \begin{aligned}
+            \int \frac{\ln \sin x}{\tan x} \dd x
+            &= \int \frac{\ln \sin x}{\frac{\sin x}{\cos x}} \dd x \\
+            &= \int \frac{\ln \sin x}{\sin x} \cdot \cos x \dd x
+            \end{aligned}
+            $$
+            ここで、\(\sin x = t\)とおくと、\(\cos x \dd x = \dd t\)
+            $$
+            (与式) = \int \frac{\ln t}{t} \dd t \\
+            $$
+            さらに、\(\ln t = u\)とおくと、\(\frac{1}{t} \dd t = \dd u\)
+            $$
+            \begin{aligned}
+            (与式) &= \int u \dd u \\
+            &= \frac{1}{2} u^2 + C \\
+            &= \frac{1}{2} (\ln t)^2 + C \\
+            &= \frac{1}{2} (\ln \sin x)^2 + C \, (Cは積分定数)
+            \end{aligned}
+            $$
+        </details>
+    </body>    
+</html>
