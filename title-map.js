@@ -5,7 +5,7 @@ export const pageTitleMap = {
     "problems": "自作問題",
     "tools": "ツール",
     "works": "作品",
-    "prime": "数学",
+    "prime": "素因数分解",
     "omikuji": "おみくじ",
     "prime_factorlize": "素因数分解",
     "rarity_calc": "レア度計算",
