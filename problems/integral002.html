@@ -16,14 +16,14 @@
         <div id="breadcrumbs"></div>
         <h2 class="center">積分002</h2>
         <p class="center">以下の不定積分を求めよ。</p>
-        $$\int \frac{\ln \sin x}{\tan x} \dd x$$
+        $$\int \frac{\ln (\sin x)}{\tan x} \dd x$$
         <details class="center">
             <summary>解答</summary>
             $$
             \begin{aligned}
-            \int \frac{\ln \sin x}{\tan x} \dd x
-            &= \int \frac{\ln \sin x}{\frac{\sin x}{\cos x}} \dd x \\
-            &= \int \frac{\ln \sin x}{\sin x} \cdot \cos x \dd x
+            \int \frac{\ln (\sin x)}{\tan x} \dd x
+            &= \int \frac{\ln (\sin x)}{\frac{\sin x}{\cos x}} \dd x \\
+            &= \int \frac{\ln (\sin x)}{\sin x} \cdot \cos x \dd x
             \end{aligned}
             $$
             ここで、\(\sin x = t\)とおくと、\(\cos x \dd x = \dd t\)
@@ -36,7 +36,7 @@
             (与式) &= \int u \dd u \\
             &= \frac{1}{2} u^2 + C \\
             &= \frac{1}{2} (\ln t)^2 + C \\
-            &= \frac{1}{2} (\ln \sin x)^2 + C \, (Cは積分定数)
+            &= \boxed{\frac{1}{2} \{\ln (\sin x)\}^2 + C \, (Cは積分定数)}
             \end{aligned}
             $$
         </details>
