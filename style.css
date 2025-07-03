@@ -1,10 +1,13 @@
 html {
     background-color: #ffeeee;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
+
 h1 {
     padding: 10px;
     min-height: 100px;
-    justify-content: right;
+    justify-content: flex-end;
     align-items: center;
     display: flex;
     align-items: flex-end;
@@ -13,6 +16,7 @@ h1 {
     background-blend-mode: lighten;
     background-size: cover;
     background-position: center;
+    font-size: clamp(16px, 4vw, 32px);
 }
 .no-margin {
     margin: 0px;
@@ -20,7 +24,10 @@ h1 {
 #nav-container {
     width: 100%;
     background-color: #eeeeff;
+    overflow-x: auto; /* 横方向にはみ出たらスクロールバーを出す */
+    -webkit-overflow-scrolling: touch;
 }
+
 div[id^="video"]{
     background-color: gray;
     width: 640px;
@@ -43,6 +50,8 @@ nav ul {
     display: flex;
     width: 100%; 
     justify-content: space-around;
+    flex-wrap: nowrap; /* ★重要：強制的に折り返さないようにする */
+    min-width: max-content; /* ★重要：中身が全部収まる最小幅を確保する */
 }
 nav li {
     margin: 0 20px;
@@ -111,6 +120,12 @@ nav li {
     color: #666;
 }
 
+.table-container th,
+.table-container td {
+    /* セルの中のテキストを、強制的に改行させないようにする */
+    white-space: nowrap;
+}
+
 #time {
     margin-top: 0px;
 }
@@ -177,3 +192,8 @@ summary {
     gap: 20px;
 }
 
+.table-container {
+    width: 100vw;
+    overflow-x: auto; /* 横方向にはみ出たらスクロールバーを出す */
+    -webkit-overflow-scrolling: touch; /* スマホで滑らかにスクロールさせるためのおまじない */
+}
