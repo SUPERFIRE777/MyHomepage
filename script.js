@@ -1,6 +1,6 @@
 import { pageTitleMap } from "./title-map.js";
 
-const homeLink = `<a href="/index.html">ホーム</a>`;
+const homeLink = `<a href="/MyHomepage/index.html">ホーム</a>`;
 
 const navHTML = `
 <nav>
