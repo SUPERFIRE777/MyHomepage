@@ -6,10 +6,10 @@ const navHTML = `
 <nav>
     <ul>
         <li>${homeLink}</li>
-        <li><a href="/introduction.html">自己紹介</a></li>
-        <li><a href="/articles.html">記事</a></li>
-        <li><a href="/tools.html">ツール</a></li>
-        <li><a href="/problems.html">自作問題</a></li>
+        <li><a href="./introduction.html">自己紹介</a></li>
+        <li><a href="./articles.html">記事</a></li>
+        <li><a href="./tools.html">ツール</a></li>
+        <li><a href="./problems.html">自作問題</a></li>
     </ul>
 </nav>
 `;
