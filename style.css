@@ -11,7 +11,7 @@ h1 {
     align-items: center;
     display: flex;
     align-items: flex-end;
-    background-image: url('/background.jpeg');
+    background-image: url('/MyHomepage/background.jpeg');
     background-color: rgba(255, 255, 255, 0.9);
     background-blend-mode: lighten;
     background-size: cover;
