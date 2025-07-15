@@ -27,7 +27,7 @@ def omikuji(event):
 
     for i, tile in enumerate(hand):
         col_table = {"m": "man", "p": "pin", "s": "sou", "z": "ji"}
-        html += f"<img src='/pai-images/{col_table[tile[1]]}{tile[0]}-66-90-l-emb.png'>"
+        html += f"<img src='/MyHomepage/pai-images/{col_table[tile[1]]}{tile[0]}-66-90-l-emb.png'>"
         
     if result == -1:
         result_text = "天和"
