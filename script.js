@@ -278,7 +278,7 @@ function calculate_rarity(){
 
 function generate_breadcrumbs(){
     const path = window.location.pathname;
-    const split_path = path.split("/").filter(x => x != "");
+    const split_path = path.split("/").filter(x => x != "" && x != "MyHomepage");
     const element = document.getElementById("breadcrumbs");
 
     if(element == null) return;
@@ -290,7 +290,7 @@ function generate_breadcrumbs(){
         if(idx == split_path.length - 1){
             links = links.concat([`<span>${title}</span>`]);
         }else{
-            links = links.concat([`<a href="/${part}.html">${title}</a>`]);
+            links = links.concat([`<a href="/MyHomepage/${part}.html">${title}</a>`]);
         }
     }
 
