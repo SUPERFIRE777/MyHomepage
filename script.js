@@ -1,4 +1,4 @@
-import { pageTitleMap } from "/title-map.js";
+import { pageTitleMap } from "./title-map.js";
 
 const homeLink = `<a href="/index.html">ホーム</a>`;
 
