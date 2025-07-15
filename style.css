@@ -120,6 +120,11 @@ nav li {
     color: #666;
 }
 
+.table-container {
+    display: flex;
+    justify-content: center; /* 水平方向の中央揃え */
+}
+
 .table-container th,
 .table-container td {
     /* セルの中のテキストを、強制的に改行させないようにする */
