@@ -187,7 +187,7 @@ async function fetch_images(){
         for (let suit of suits) {
             for (let j = 1; j <= 9; j++) {
                 if (suit === "ji" && j === 7) break;
-                const url = `./pai-images/${suit}${j}-66-90-l-emb.png`;
+                const url = `/MyHomepage/pai-images/${suit}${j}-66-90-l-emb.png`;
                 
                 // 非同期に画像を読み込み
                 await fetch(url);
