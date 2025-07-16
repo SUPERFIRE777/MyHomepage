@@ -390,4 +390,12 @@ window.addEventListener("DOMContentLoaded", function() {
             ceil_point();
         });
     }
+
+    // コピーボタン
+    const copyButton = document.getElementById('copy-button');
+    if(copyButton){
+        copyButton.addEventListener('click', function(){
+            copy_text_by_id('factor');
+        });
+    }
 });
