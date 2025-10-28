@@ -330,17 +330,17 @@ window.onload = async function() {
         if(element != null){
             var now = new Date();
 
-            var target = new Date(2025, 9, 16); 
-            /*if(now.getMonth() == 0 && now.getDate() == 1){
+            //var target = new Date(2025, 9, 16); 
+            if(now.getMonth() == 0 && now.getDate() == 1){
                 var newYear = new Date(now.getFullYear(), 0, 1);
             }else{
                 var newYear = new Date(now.getFullYear() + 1, 0, 1);
-            }*/
+            }
             var second = Math.ceil((target/*newYear*/ - now) / 1000);
             if(second > 0){
                 element.innerText = timeDisplay(second);
             }else{
-                element.innerText = "0秒" // "0秒\nHappy New Year!!";
+                element.innerText = "0秒\nHappy New Year!!";
             }
         }
     }, 0);
