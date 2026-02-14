@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>積分003</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="icon" href="../favicon.ico" type="image/x-icon"> 
+        <script src="../use-MathJax.js"></script>
+        <script type="module" src="../script.js"></script>
+        <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+    <body>
+        <h1>SUPERFIRE777のサイト</h1>
+        <div id="nav-container"></div>
+        <div id="breadcrumbs"></div>
+        <h2 class="center">積分003</h2>
+        <p class="center">以下の方程式を\(0 \le x \le \pi\)の範囲で解け。</p>
+        $$\qty(\int_0^x \sin t \, \dd t)^2 + \qty(\int_0^x \cos t \, \dd t)^2 = 1$$
+        <details class="center">
+            <summary>解答</summary>
+            $$
+            \begin{aligned}
+            \qty(左辺) &= \qty( \qty[-\cos t]_0^x )^2 + \qty( \qty[\sin t]_0^x)^2 \\
+            &= \qty( -\cos x + \cos 0 )^2 + \qty( \sin x - \sin 0 )^2\\
+            &= \qty( -\cos x + 1 )^2 + \qty( \sin x )^2  \\
+            &= \qty( \cos^2 x - 2 \cos x + 1) + \sin^2 x \\
+            &= 1 - 2 \cos x + 1 \\
+            &= 2 - 2 \cos x \\
+            \end{aligned}
+            $$
+            これを元の方程式に代入して解く。
+            $$
+            \begin{aligned}
+            2 - 2 \cos x &= 1 \\
+            -2 \cos x &= -1 \\
+            \cos x &= \frac{1}{2}
+            \end{aligned}
+            $$
+            \(0 \le x \le \pi\)より、\(\boxed{x = \frac{\pi}{3}}\)
+        </details>
+    </body>    
+</html>

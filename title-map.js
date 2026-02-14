@@ -12,4 +12,5 @@ export const pageTitleMap = {
     "score_calc": "青天井",
     "integral001": "積分001",
     "integral002": "積分002",
+    "integral003": "積分003",
 };
