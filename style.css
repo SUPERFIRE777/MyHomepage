@@ -84,6 +84,7 @@ nav li {
     margin-right: auto;
     width: fit-content; 
     height: fit-content;
+    max-width: 100%;
 }
 
 .rarity-bar {
@@ -118,11 +119,6 @@ nav li {
     margin: 0;
     font-size: 0.9em;
     color: #666;
-}
-
-.table-container {
-    display: flex;
-    justify-content: center; /* 水平方向の中央揃え */
 }
 
 .table-container th,
@@ -198,7 +194,8 @@ summary {
 }
 
 .table-container {
-    width: 100vw;
+    width: 100%;
     overflow-x: auto; /* 横方向にはみ出たらスクロールバーを出す */
     -webkit-overflow-scrolling: touch; /* スマホで滑らかにスクロールさせるためのおまじない */
+    justify-content: center; /* 水平方向の中央揃え */
 }
